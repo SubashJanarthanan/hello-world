@@ -3,3 +3,4 @@ https://help.eclipse.org/neon/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2F
 https://www.eclipse.org/forums/index.php/t/85047/
 https://www.modumind.com/2008/01/04/using-formeditor-when-you-only-have-a-single-page/
 https://wiki.eclipse.org/FAQ_How_do_I_enable_the_Save_and_Revert_actions%3F
+https://dzone.com/articles/10-oops-concepts-in-java
