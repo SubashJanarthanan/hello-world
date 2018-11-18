@@ -5,3 +5,4 @@ https://www.modumind.com/2008/01/04/using-formeditor-when-you-only-have-a-single
 https://wiki.eclipse.org/FAQ_How_do_I_enable_the_Save_and_Revert_actions%3F
 https://dzone.com/articles/10-oops-concepts-in-java
 https://eclipsesource.com/blogs/2012/10/26/filtering-tables-in-swtjface/
+https://stackoverflow.com/questions/32160608/jaxb-update-xml-elements
