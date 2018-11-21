@@ -1,4 +1,4 @@
-package com.magna.xmsystem.xmadmin.ui.parts.objexpcontextmenu;
+
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -14,85 +14,12 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.widgets.Menu;
 
-import com.magna.xmsystem.xmadmin.message.Message;
-import com.magna.xmsystem.xmadmin.message.MessageRegistry;
-import com.magna.xmsystem.xmadmin.ui.parts.objexp.ObjectExplorer;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.IAdminTreeChild;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.adminarea.AdminAreaProjectAppFixed;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.adminarea.AdminAreaProjectAppNotFixed;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.adminarea.AdminAreaProjectAppProtected;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.adminarea.AdminAreaProjectApplications;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.adminarea.AdminAreaProjectChild;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.adminarea.AdminAreaProjectStartApplications;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.adminarea.AdminAreaStartApplications;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.adminarea.AdminAreaUserAppFixed;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.adminarea.AdminAreaUserAppNotFixed;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.adminarea.AdminAreaUserAppProtected;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.adminarea.AdminAreaUserApplications;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.adminarea.AdministrationArea;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.applicationmodel.baseapplicationmodel.BaseAppProjectApplications;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.applicationmodel.baseapplicationmodel.BaseAppStartApplications;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.applicationmodel.baseapplicationmodel.BaseAppUserApplications;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.applicationmodel.baseapplicationmodel.BaseApplication;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.applicationmodel.projectapplicationmodel.ProjectAppAdminAreaChild;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.applicationmodel.projectapplicationmodel.ProjectAppAdminAreaProjects;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.applicationmodel.projectapplicationmodel.ProjectAppUsers;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.applicationmodel.projectapplicationmodel.ProjectApplication;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.applicationmodel.startapplicationmodel.StartAppAdminAreas;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.applicationmodel.startapplicationmodel.StartAppProjects;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.applicationmodel.startapplicationmodel.StartAppUsers;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.applicationmodel.startapplicationmodel.StartApplication;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.applicationmodel.userapplicationmodel.UserAppAdminAreas;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.applicationmodel.userapplicationmodel.UserApplication;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.configuration.notification.ProAARelAssignEvtAction;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.configuration.notification.ProAARelRemoveEvtAction;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.configuration.notification.ProjectActivateEvtAction;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.configuration.notification.ProjectCreateEvtAction;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.configuration.notification.ProjectDeactivateEvtAction;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.configuration.notification.ProjectDeleteEvtAction;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.configuration.notification.UserProRelExpEvtAction;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.configuration.notification.UserProjectRelAssignEvtAction;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.configuration.notification.UserProjectRelRemoveEvtAction;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.configuration.roles.Role;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.directory.DirectoryApplications;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.projects.Project;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.projects.ProjectAdminAreaChild;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.projects.ProjectAdminAreaProjectAppFixed;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.projects.ProjectAdminAreaProjectAppNotFixed;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.projects.ProjectAdminAreaProjectAppProtected;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.projects.ProjectAdminAreaProjectApplications;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.projects.ProjectAdminAreaStartApplications;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.projects.ProjectProjectApplications;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.projects.ProjectUserAAProjectApplications;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.projects.ProjectUserAdminAreaChild;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.projects.ProjectUserChild;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.refs.RelationObj;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.sitemodel.Site;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.sitemodel.SiteAdminAreaProjectApplications;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.sitemodel.SiteAdminAreaProjectChild;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.sitemodel.SiteAdminAreaProjectStartApplications;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.sitemodel.SiteAdminAreaStartApplications;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.sitemodel.SiteAdminAreaUserAppFixed;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.sitemodel.SiteAdminAreaUserAppNotFixed;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.sitemodel.SiteAdminAreaUserAppProtected;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.sitemodel.SiteAdminAreaUserApplications;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.sitemodel.SiteAdminProjectAppFixed;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.sitemodel.SiteAdminProjectAppNotFixed;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.sitemodel.SiteAdminProjectAppProtected;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.sitemodel.SiteAdministrationChild;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.users.User;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.users.UserAAUserApplications;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.users.UserAdminAreaChild;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.users.UserProjectAAProjectApplications;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.users.UserProjectAdminAreaChild;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.users.UserProjectChild;
-import com.magna.xmsystem.xmadmin.ui.treeviewer.admintree.model.users.UserStartApplications;
-import com.magna.xmsystem.xmadmin.util.CommonConstants;
+
 
 /**
  * The Class ObjExpContextMenu.
  */
-public class ObjExpContextMenu {
+public class SampleMenu {
 
 	/** The create as. */
 	CreateAsAction createAs;
